@@ -6,8 +6,22 @@ export const corsOptions: cors.CorsOptions = {
     // Allow requests with no origin (like mobile apps, curl, or dev tools)
     if (!origin) return callback(null, true);
 
-    const allowed = [ENV.CORS_ORIGIN, 'http://localhost:5173', 'http://127.0.0.1:5173'];
+    const configuredOrigins = (ENV.CORS_ORIGIN || '')
+      .split(',')
+      .map((o) => o.trim())
+      .filter(Boolean);
+
+    const allowed = [
+      ...configuredOrigins,
+      'http://localhost:5173',
+      'http://127.0.0.1:5173',
+    ];
     if (allowed.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // Permit Vercel deployments (*.vercel.app)
+    if (origin.endsWith('.vercel.app')) {
       return callback(null, true);
     }
 
