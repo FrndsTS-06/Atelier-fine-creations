@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bridalBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2a1f18" />
+      <stop offset="100%" stop-color="#0c0d10" />
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff2be" />
+      <stop offset="50%" stop-color="#d4af37" />
+      <stop offset="100%" stop-color="#805d04" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bridalBg)" />
+  <circle cx="300" cy="300" r="220" fill="none" stroke="#3d2c20" stroke-width="1.5" stroke-dasharray="4 6" />
+  <g transform="translate(300, 280)">
+    <!-- Bridal Choker Motif -->
+    <path d="M-140,-60 C-60,80 60,80 140,-60 C80,30 -80,30 -140,-60 Z" fill="url(#gold)" />
+    <path d="M-100,-20 C-40,110 40,110 100,-20" fill="none" stroke="url(#gold)" stroke-width="5" />
+    <!-- Center teardrop ruby/gold pendant -->
+    <path d="M0,70 C-25,120 0,160 0,160 C0,160 25,120 0,70 Z" fill="url(#gold)" />
+    <circle cx="0" cy="120" r="8" fill="#b91c1c" />
+    <circle cx="-50" cy="85" r="8" fill="url(#gold)" />
+    <circle cx="50" cy="85" r="8" fill="url(#gold)" />
+  </g>
+</svg>

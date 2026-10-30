@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bracBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#241b18" />
+      <stop offset="100%" stop-color="#0b0b0e" />
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff5cc" />
+      <stop offset="50%" stop-color="#d4af37" />
+      <stop offset="100%" stop-color="#735203" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bracBg)" />
+  <g transform="translate(300, 300)">
+    <!-- Kada / Bangle Oval -->
+    <ellipse cx="0" cy="0" rx="140" ry="110" fill="none" stroke="url(#gold)" stroke-width="22" />
+    <!-- Filigree Diamond Inset Dots -->
+    <circle cx="-135" cy="0" r="4" fill="#ffffff" />
+    <circle cx="135" cy="0" r="4" fill="#ffffff" />
+    <circle cx="0" cy="-105" r="4" fill="#ffffff" />
+    <circle cx="0" cy="105" r="4" fill="#ffffff" />
+    <circle cx="-95" cy="-75" r="3.5" fill="#ffffff" />
+    <circle cx="95" cy="-75" r="3.5" fill="#ffffff" />
+    <circle cx="-95" cy="75" r="3.5" fill="#ffffff" />
+    <circle cx="95" cy="75" r="3.5" fill="#ffffff" />
+  </g>
+</svg>

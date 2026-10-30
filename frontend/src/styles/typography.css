@@ -1,0 +1,112 @@
+/* ========================================================
+   ATELIER FINE CREATIONS — Typography Rules
+   ======================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-ivory);
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Luxury Editorial & Metallic Text Styles */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--color-ivory) 0%, var(--color-champagne) 45%, var(--color-warm-beige) 80%, var(--color-espresso) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-gold-solid {
+  color: var(--color-champagne);
+}
+
+.text-serif-lead {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  line-height: 1.65;
+  color: var(--color-warm-beige);
+  font-style: normal;
+}
+
+.text-serif-lead em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.eyebrow-badge {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-champagne);
+}
+
+.text-subtle-serif {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-ivory-muted);
+}
+
+.text-caption {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-ivory-dim);
+  letter-spacing: 0.04em;
+}
+
+/* Accessible Selection */
+::selection {
+  background-color: var(--color-champagne);
+  color: var(--color-obsidian);
+}

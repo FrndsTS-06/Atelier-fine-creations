@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="storyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f1c19" />
+      <stop offset="100%" stop-color="#0a0a0c" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8db" />
+      <stop offset="40%" stop-color="#d4af37" />
+      <stop offset="100%" stop-color="#735203" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#storyBg)" />
+  <!-- Architectural Arch & Chandelier motif -->
+  <path d="M150,350 L150,160 C150,80 450,80 450,160 L450,350" fill="none" stroke="url(#gold)" stroke-width="2" />
+  <circle cx="300" cy="180" r="45" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-dasharray="3 3" />
+  <circle cx="300" cy="180" r="10" fill="url(#gold)" />
+  <path d="M300,80 L300,170" stroke="url(#gold)" stroke-width="2" />
+  <text x="300" y="270" text-anchor="middle" font-family="'Cinzel', serif" font-size="20" letter-spacing="4" fill="url(#gold)">
+    EST. 1928 • PLACE VENDÔME
+  </text>
+  <text x="300" y="300" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="16" font-style="italic" fill="#e5e7eb">
+    Four generations of master goldsmiths sculpting timeless legacy.
+  </text>
+</svg>

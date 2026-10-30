@@ -1,0 +1,38 @@
+{
+  "name": "aurelien-gold-shop-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AURÉLIEN — Haute Joaillerie & Elite Gold Boutique Platform",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "dev:all": "concurrently \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=backend && npm run build --workspace=frontend",
+    "typecheck": "npm run typecheck --workspace=backend && npm run typecheck --workspace=frontend",
+    "lint": "npm run lint --workspace=frontend && npm run lint --workspace=backend",
+    "test": "npx tsx --test backend/tests/*.test.ts frontend/tests/components/*.test.tsx frontend/tests/pages/*.test.tsx",
+    "db:migrate": "npm run prisma:migrate --workspace=backend",
+    "db:seed": "npm run prisma:seed --workspace=backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "gold",
+    "jewelry",
+    "luxury",
+    "e-commerce",
+    "atelier",
+    "react",
+    "typescript",
+    "express",
+    "prisma"
+  ],
+  "author": "AURÉLIEN Atelier",
+  "license": "UNLICENSED"
+}

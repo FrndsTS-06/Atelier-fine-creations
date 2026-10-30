@@ -1,0 +1,149 @@
+/* ========================================================
+   ATELIER FINE CREATIONS — Animations & Micro-Interactions
+   ======================================================== */
+
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes specularAtmosphere {
+  0%, 100% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 12px rgba(196, 154, 90, 0.25));
+  }
+  50% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 28px rgba(196, 154, 90, 0.6));
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(196, 154, 90, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(196, 154, 90, 0);
+  }
+}
+
+/* Phase D: Hero Refined Sequence Keyframes */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slowAtmosphereZoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+/* Utility Animation Classes */
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(196, 154, 90, 0) 0%, rgba(196, 154, 90, 0.35) 50%, rgba(196, 154, 90, 0) 100%);
+  background-size: 200% 100%;
+  animation: goldShimmer 3.2s infinite;
+}
+
+.animate-float {
+  animation: gentleFloat 1s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: specularAtmosphere 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* Hero Stagger Sequence Classes */
+.hero-seq-1 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-seq-2 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+}
+
+.hero-seq-3 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.36s both;
+}
+
+.hero-seq-4 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.hero-seq-5 {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+.hero-visual-entrance {
+  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.hero-slow-zoom {
+  animation: slowAtmosphereZoom 14s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* 3D Perspective & Preservation Containers */
+.perspective-container {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-shimmer,
+  .animate-float,
+  .animate-glow,
+  .animate-pulse-glow,
+  .hero-seq-1,
+  .hero-seq-2,
+  .hero-seq-3,
+  .hero-seq-4,
+  .hero-seq-5,
+  .hero-visual-entrance,
+  .hero-slow-zoom {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

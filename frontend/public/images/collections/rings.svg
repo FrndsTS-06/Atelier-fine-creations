@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="ringBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#241e17" />
+      <stop offset="100%" stop-color="#0b0c0f" />
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff5cc" />
+      <stop offset="50%" stop-color="#d4af37" />
+      <stop offset="100%" stop-color="#735203" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#ringBg)" />
+  <g transform="translate(300, 310)">
+    <!-- Ring Shank -->
+    <ellipse cx="0" cy="20" rx="110" ry="85" fill="none" stroke="url(#gold)" stroke-width="24" />
+    <!-- Solitaire Diamond Crown -->
+    <path d="M-40,-75 L40,-75 L28,-40 L-28,-40 Z" fill="#ffffff" opacity="0.9" />
+    <polygon points="-40,-75 0,-110 40,-75 0,-60" fill="#e2f1ff" />
+    <polygon points="-40,-75 0,-60 -28,-40" fill="#bcd9f5" />
+    <polygon points="40,-75 0,-60 28,-40" fill="#d8ecfc" />
+    <!-- Setting claws -->
+    <circle cx="-38" cy="-70" r="5" fill="url(#gold)" />
+    <circle cx="38" cy="-70" r="5" fill="url(#gold)" />
+    <circle cx="0" cy="-108" r="4" fill="#ffffff" />
+  </g>
+</svg>

@@ -1,0 +1,119 @@
+datasource db {
+  // Configured for zero-config local development with SQLite,
+  // fully compatible with PostgreSQL deployment by setting provider = "postgresql"
+  // and DATABASE_URL = "postgresql://user:password@host:5432/dbname?schema=public".
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 5. AdminUser Model
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  fullName     String?   @default("Admin")
+  role         String    @default("ADMIN") // ADMIN, SUPER_ADMIN
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now()) @updatedAt
+
+  @@map("admin_users")
+}
+
+// User model for administrative staff
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  fullName     String
+  role         String    @default("ADMIN")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now()) @updatedAt
+  products     Product[]
+
+  @@map("users")
+}
+
+// 1. Category Model
+model Category {
+  id           String    @id @default(cuid())
+  name         String
+  slug         String    @unique
+  description  String?
+  bannerUrl    String?
+  displayOrder Int       @default(0)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now()) @updatedAt
+  products     Product[]
+
+  @@map("categories")
+}
+
+// 2. Product Model
+model Product {
+  id                String         @id @default(cuid())
+  name              String
+  slug              String         @unique
+  sku               String?
+  description       String
+  categoryId        String
+  category          Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  price             Decimal?
+  currency          String?        @default("USD")
+  purchaseUrl       String?
+  status            String         @default("published") // published, draft, archived
+  isFeatured        Boolean        @default(false)
+  purity            String?        @default("22K")
+  grossWeight       Float?
+  netWeight         Float?
+  stoneWeight       Float?         @default(0)
+  makingCharges     Float?         @default(0)
+  estimatedPrice    Float?
+  hallmarkCertified Boolean?       @default(true)
+  inStock           Boolean?       @default(true)
+  legacyImages      String?        @map("images")
+  images            ProductImage[]
+  createdById       String?
+  createdBy         User?          @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  inquiries         Inquiry[]
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @default(now()) @updatedAt
+
+  @@map("products")
+}
+
+// 3. ProductImage Model
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  imageUrl  String
+  altText   String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@map("product_images")
+}
+
+// 4. Inquiry Model
+model Inquiry {
+  id             String   @id @default(cuid())
+  name           String   @default("Valued Client")
+  fullName       String?
+  email          String
+  subject        String?
+  message        String
+  phone          String?
+  preferredKarat String?
+  status         String   @default("PENDING") // PENDING, CONTACTED, SCHEDULED, CLOSED
+  internalNotes  String?
+  productId      String?
+  product        Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now()) @updatedAt
+
+  @@map("inquiries")
+}

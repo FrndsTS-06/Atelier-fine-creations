@@ -1,0 +1,303 @@
+/* ========================================================
+   ATELIER FINE CREATIONS — Molten Gold & Refining Experience
+   ======================================================== */
+
+.molten-bg-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Layered Cinematic Visual Stages */
+.molten-stage-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 38%;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 12s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.molten-stage-layer.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Balanced Gradient Overlay & Shadow Grading */
+.molten-vignette-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 10, 8, 0.76) 0%,
+    rgba(12, 10, 8, 0.50) 42%,
+    rgba(12, 10, 8, 0.12) 70%,
+    rgba(12, 10, 8, 0.20) 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+@media (max-width: 768px) {
+  .molten-vignette-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(12, 10, 8, 0.82) 0%,
+      rgba(12, 10, 8, 0.55) 55%,
+      rgba(12, 10, 8, 0.22) 100%
+    );
+  }
+}
+
+.molten-bottom-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 130px;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 11, 9, 0) 0%,
+    rgba(12, 11, 9, 0.5) 65%,
+    var(--color-obsidian) 100%
+  );
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Thermodynamic Furnace Heat Glow Pulsation */
+@keyframes furnaceBreathe {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.96) translate(-50%, -50%);
+    filter: drop-shadow(0 0 30px rgba(229, 142, 38, 0.45));
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08) translate(-50%, -50%);
+    filter: drop-shadow(0 0 75px rgba(255, 196, 59, 0.75));
+  }
+}
+
+.furnace-heat-radiator {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  width: min(900px, 90vw);
+  height: min(900px, 90vw);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 230, 150, 0.35) 0%,
+    rgba(229, 142, 38, 0.24) 30%,
+    rgba(168, 80, 15, 0.12) 60%,
+    transparent 80%
+  );
+  transform: translate(-50%, -50%);
+  animation: furnaceBreathe 5.5s ease-in-out infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+/* Real-Time Fluid Flow Canvas */
+.molten-fluid-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* Smoked-Glass Narrative Shield for Crystal Readability */
+.hero-narrative-shield {
+  background: rgba(14, 13, 10, 0.76);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(196, 154, 90, 0.28);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2.5rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 0 35px rgba(196, 154, 90, 0.12);
+  position: relative;
+  z-index: 5;
+}
+
+@media (max-width: 640px) {
+  .hero-narrative-shield {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* Refining Stage Indicators */
+.refining-stage-nav {
+  position: absolute;
+  bottom: 1.75rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 10;
+  background: rgba(16, 15, 12, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(196, 154, 90, 0.3);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 0.85rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 20px rgba(196, 154, 90, 0.15);
+}
+
+@media (max-width: 768px) {
+  .refining-stage-nav {
+    bottom: 0.75rem;
+    right: 50%;
+    transform: translateX(50%);
+    width: max-content;
+  }
+}
+
+.refining-stage-chip {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-ivory-dim);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all var(--transition-fast);
+}
+
+.refining-stage-chip:hover {
+  color: var(--color-ivory);
+  background: rgba(196, 154, 90, 0.1);
+  border-color: rgba(196, 154, 90, 0.25);
+}
+
+.refining-stage-chip.active {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(196, 154, 90, 0.35) 0%, rgba(138, 59, 0, 0.45) 100%);
+  border-color: var(--color-champagne);
+  box-shadow: 0 0 14px rgba(196, 154, 90, 0.35);
+}
+
+.refining-stage-chip .stage-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-ivory-dim);
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.refining-stage-chip.active .stage-dot {
+  background-color: #ffd700;
+  box-shadow: 0 0 8px #ffd700;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .molten-stage-layer {
+    transition: none !important;
+    transform: none !important;
+  }
+  .furnace-heat-radiator {
+    animation: none !important;
+    opacity: 0.65 !important;
+  }
+  .gold-refining-image-zoom,
+  .watch-image-floating {
+    animation: none !important;
+  }
+}
+
+/* ========================================================
+   ATELIER — Luxury Watch Showcase Component Animations
+   ======================================================== */
+@keyframes watchGentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.watch-image-floating {
+  animation: watchGentleFloat 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes goldCrucibleSlowZoom {
+  0% {
+    transform: scale(1.0);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+@keyframes goldRefiningRevealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gold-refining-showcase-wrapper {
+  animation: goldRefiningRevealUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.gold-refining-image-zoom {
+  animation: goldCrucibleSlowZoom 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.gold-refining-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1.5px solid rgba(214, 174, 103, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(214, 174, 103, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background-color: rgba(16, 14, 11, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.4s ease;
+}
+
+.gold-refining-frame:hover {
+  border-color: rgba(214, 174, 103, 0.75);
+}
+
+@media (max-width: 900px) {
+  .gold-refining-showcase-wrapper {
+    max-width: 100% !important;
+    align-items: center !important;
+  }
+}
+
+

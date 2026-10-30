@@ -1,0 +1,56 @@
+services:
+  # Managed PostgreSQL Database
+  - type: postgres
+    name: aurelien-postgres
+    databaseName: aurelien_production
+    user: aurelien_admin
+    plan: standard
+
+  # Backend Express REST API
+  - type: web
+    name: aurelien-api
+    env: node
+    plan: standard
+    rootDir: backend
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npx prisma db push && npm run start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: aurelien-postgres
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CORS_ORIGIN
+        value: https://aurelien.gold
+      - key: ADMIN_DEFAULT_EMAIL
+        value: admin@aurelien.gold
+      - key: ADMIN_DEFAULT_PASSWORD
+        sync: false
+
+  # Frontend Vite Static Site
+  - type: static
+    name: aurelien-web
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://aurelien-api.onrender.com/api/v1
+      - key: VITE_ENABLE_MOCK_FALLBACK
+        value: "false"

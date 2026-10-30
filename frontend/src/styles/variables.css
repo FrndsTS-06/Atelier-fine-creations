@@ -1,0 +1,94 @@
+:root {
+  /* ========================================================
+     ATELIER FINE CREATIONS — Design System Tokens
+     ======================================================== */
+
+  /* Exact Color Palette */
+  --color-obsidian: #0C0B09;
+  --color-obsidian-subtle: #141310;
+  --color-obsidian-card: #191814;
+  --color-obsidian-hover: #22201B;
+  --color-obsidian-border: #2C2720;
+  --color-obsidian-border-subtle: rgba(196, 154, 90, 0.18);
+
+  --color-espresso: #352318;
+  --color-espresso-dark: #22160F;
+  --color-espresso-light: #4A3324;
+
+  --color-champagne: #C49A5A;
+  --color-champagne-light: #DEC08E;
+  --color-champagne-dark: #A87E40;
+  --color-champagne-glow: rgba(196, 154, 90, 0.22);
+  --color-champagne-faint: rgba(196, 154, 90, 0.08);
+
+  --color-ivory: #F5F0E7;
+  --color-ivory-muted: #D5CCC0;
+  --color-ivory-dim: #A89E90;
+
+  --color-warm-beige: #D8C4A8;
+  --color-warm-beige-muted: #B8A58D;
+
+  --color-body: #37312B;
+  --color-body-dark: #37312B;
+  --color-body-on-dark: #E2DBD0;
+
+  /* State Accents */
+  --color-success: #2E7D5B;
+  --color-success-bg: rgba(46, 125, 91, 0.15);
+  --color-error: #B94A48;
+  --color-error-bg: rgba(185, 74, 72, 0.12);
+
+  /* Typography Stacks */
+  --font-heading: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing Scale */
+  --space-2xs: 0.25rem;  /* 4px */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4.5rem;   /* 72px */
+  --space-4xl: 6rem;     /* 96px */
+
+  /* Border Radii */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Elevation & Shadows */
+  --shadow-sm: 0 2px 8px rgba(12, 11, 9, 0.5);
+  --shadow-md: 0 8px 24px rgba(12, 11, 9, 0.7);
+  --shadow-lg: 0 16px 48px rgba(12, 11, 9, 0.85);
+  --shadow-gold: 0 8px 30px rgba(196, 154, 90, 0.16);
+  --shadow-gold-hover: 0 14px 40px rgba(196, 154, 90, 0.28);
+  --shadow-gold-glow: 0 0 28px rgba(196, 154, 90, 0.35);
+
+  /* Advanced Glassmorphism Tokens */
+  --glass-bg: rgba(20, 19, 16, 0.75);
+  --glass-bg-elevated: rgba(28, 25, 21, 0.84);
+  --glass-bg-subtle: rgba(255, 255, 255, 0.055);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-border-subtle: rgba(255, 255, 255, 0.08);
+  --glass-border-gold: rgba(196, 154, 90, 0.32);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --glass-gold: rgba(196, 154, 90, 0.55);
+  --glass-gold-subtle: rgba(196, 154, 90, 0.2);
+  --glass-blur: 18px;
+  --glass-blur-heavy: 28px;
+  --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 14px rgba(196, 154, 90, 0.08);
+  --glass-shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(196, 154, 90, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Focus Indicator */
+  --focus-ring: 0 0 0 2px #0C0B09, 0 0 0 4px #C49A5A;
+}
