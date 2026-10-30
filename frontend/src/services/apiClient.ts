@@ -1,8 +1,32 @@
-// Read public API base URL from VITE_API_BASE_URL with fallback
-const BASE_URL =
-  (typeof import.meta !== 'undefined' && import.meta.env && (import.meta.env as any).VITE_API_BASE_URL) ||
-  (typeof globalThis !== 'undefined' && (globalThis as any).process?.env?.VITE_API_BASE_URL) ||
-  'http://localhost:5000/api/v1';
+// Dynamically resolve API base URL avoiding localhost calls in public deployments
+function getBaseUrl(): string {
+  const envUrl =
+    (typeof import.meta !== 'undefined' && import.meta.env && (import.meta.env as any).VITE_API_BASE_URL) ||
+    (typeof globalThis !== 'undefined' && (globalThis as any).process?.env?.VITE_API_BASE_URL);
+
+  const isPublicHost =
+    typeof window !== 'undefined' &&
+    window.location &&
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1';
+
+  if (envUrl && typeof envUrl === 'string' && envUrl.trim()) {
+    const trimmed = envUrl.trim();
+    // In a live public deployment (e.g. Vercel), suppress localhost URLs
+    // to prevent Chrome's "Private Network Access" device permission prompt
+    if (isPublicHost && (trimmed.includes('localhost') || trimmed.includes('127.0.0.1'))) {
+      return '';
+    }
+    return trimmed;
+  }
+
+  // Local development fallback only when accessed on localhost
+  if (!isPublicHost) {
+    return 'http://localhost:5000/api/v1';
+  }
+
+  return '';
+}
 
 export interface ApiClientOptions extends RequestInit {
   signal?: AbortSignal;
@@ -30,6 +54,19 @@ export async function request<T>(
   endpoint: string,
   options: ApiClientOptions = {}
 ): Promise<T> {
+  const baseUrl = getBaseUrl();
+
+  // If no backend endpoint is configured in public production, avoid calling localhost
+  // so callers can gracefully fall back to curated catalog without browser device permission prompts
+  if (!baseUrl) {
+    throw new ApiError(
+      'Atelier backend endpoint is not configured for public domain.',
+      0,
+      'SERVER_UNREACHABLE',
+      true
+    );
+  }
+
   const token = typeof localStorage !== 'undefined' ? localStorage.getItem('aurelien_auth_token') : null;
 
   const headers: HeadersInit = {
@@ -49,7 +86,7 @@ export async function request<T>(
   }
 
   try {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(`${baseUrl}${endpoint}`, {
       ...options,
       headers,
     });
